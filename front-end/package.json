@@ -1,0 +1,23 @@
+{
+  "name": "ieti-taskplanner2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camilavieda04/IETI-TaskPlanner2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camilavieda04/IETI-TaskPlanner2/issues"
+  },
+  "homepage": "https://github.com/camilavieda04/IETI-TaskPlanner2#readme",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
