@@ -2,6 +2,7 @@ package eci.ieti.controller;
 
 
 import eci.ieti.data.model.Todo;
+import eci.ieti.data.TodoRepository;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,9 @@ public class RESTController {
 
     @Autowired
     GridFsTemplate gridFsTemplate;
-   //TODO inject components (TodoRepository and GridFsTemplate)
+
+    @Autowired
+    TodoRepository todoRepository;
 
     @RequestMapping("/files/{filename}")
     public ResponseEntity<InputStreamResource> getFileByName(@PathVariable String filename) throws IOException {
@@ -45,22 +48,21 @@ public class RESTController {
     @CrossOrigin("*")
     @PostMapping("/files")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException {
-        gridFsTemplate.store(file.getInputStream(), fileName, file.getContentType());
+        gridFsTemplate.store(file.getInputStream(), file.getOriginalFilename(), file.getContentType());
         return null;
+    
      }
 
     @CrossOrigin("*")
     @PostMapping("/todo")
     public Todo createTodo(@RequestBody Todo todo) {
-        //TODO implement method
-        return null;
+        return todoRepository.save(todo);
     }
 
     @CrossOrigin("*")
     @GetMapping("/todo")
     public List<Todo> getTodoList() {
-        //TODO implement method
-        return null;
+        return todoRepository.findAll();
     }
 
 }

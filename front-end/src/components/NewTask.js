@@ -53,6 +53,9 @@ export default function NewTask() {
     });
     
   }
+  const handleInputChange=(e) =>{
+    setFile(e.target.files[0]);
+  }
   return (
     <form className="root" noValidate autoComplete="off" >
       <div className="layout">
@@ -92,6 +95,7 @@ export default function NewTask() {
               />
             </Grid>
           </MuiPickersUtilsProvider>
+          <input type="file" id="file" onChange={this.handleInputChange}/>
           </Container>
           <br></br><br></br>
           <Link to="/Drawer">
